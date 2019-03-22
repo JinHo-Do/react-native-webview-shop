@@ -12,7 +12,7 @@ class index extends Component {
       switchValue,
       onPressBrand,
       onOpenInstagram,
-      // onCacheClear,
+      onCacheClear,
     } = this.props;
 
     return (
@@ -33,12 +33,12 @@ class index extends Component {
               hasNavArrow={false}
               onPress={onCallPress}
             />
-            {/* <SettingsList.Item
+            <SettingsList.Item
               title="캐시 초기화"
               titleInfo="다른 계정으로 로그인 시 사용하세요."
               hasNavArrow
               onPress={onCacheClear}
-            /> */}
+            />
             <SettingsList.Item
               hasNavArrow={false}
               switchState={switchValue}

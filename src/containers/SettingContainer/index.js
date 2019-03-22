@@ -3,7 +3,7 @@ import { BackHandler, Linking, Alert, StatusBar } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withNavigation } from 'react-navigation';
-// import CookieManager from 'react-native-cookies';
+import CookieManager from 'react-native-cookies';
 
 import * as browseActions from '../../modules/browse';
 
@@ -36,9 +36,9 @@ class SettingContainer extends Component {
   componentDidMount() {
     const { os, navigation } = this.props;
 
-    // CookieManager.getAll().then(res => {
-    //   console.log('CookieManager.getAll =>', res);
-    // });
+    CookieManager.getAll().then(res => {
+      console.log('CookieManager.getAll =>', res);
+    });
 
     if (os === 'android') {
       this._willBlurSubscription = navigation.addListener('willBlur', () =>
@@ -71,12 +71,12 @@ class SettingContainer extends Component {
     return true;
   };
 
-  // onCacheClear = () => {
-  //   CookieManager.clearAll().then(res => {
-  //     console.log('res: ', res);
-  //     Alert.alert('캐시 초기화가 완료되었습니다.');
-  //   });
-  // };
+  onCacheClear = () => {
+    CookieManager.clearAll().then(res => {
+      console.log('res: ', res);
+      Alert.alert('캐시 초기화가 완료되었습니다.');
+    });
+  };
 
   onCallPress = () => {
     const { os } = this.props;
@@ -143,7 +143,7 @@ class SettingContainer extends Component {
           onValueChange={onValueChange}
           onPressBrand={onPressBrand}
           onOpenInstagram={onOpenInstagram}
-          // onCacheClear={onCacheClear}
+          onCacheClear={onCacheClear}
         />
       </>
     );
